@@ -1,0 +1,23 @@
+{
+  "name": "color-palette",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile": "sass src/styles/main.scss dist/style.css",
+    "dev": "sass -w src/styles/main.scss dist/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fykosak/color-palette.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fykosak/color-palette/issues"
+  },
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "sass": "1.45.0"
+  }
+}

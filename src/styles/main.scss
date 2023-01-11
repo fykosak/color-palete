@@ -1,4 +1,35 @@
-$fofColor: #e6060d;
-$folColor: #00ae6b;
-$fykosColor: #1175da;
-$dsefColor: #f2b72b;
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import "mixins/_vars";
+@import "mixins/_bg";
+@import "mixins/_border";
+
+@each $name, $color in $colorMap {
+  :root {
+    --color-#{$name}-main: #{$color};
+    --color-#{$name}: #{$color};
+  }
+  .btn-outline-#{$name} {
+    @include button-outline-variant($color);
+  }
+  .btn-outline-#{$name} {
+    @include button-variant($color);
+  }
+  $steps: -30, -20, -10, 0, 10, 20, 30;
+  @each $amount in $steps {
+    $suffix: '';
+    $newColor: $color;
+    @if $amount < 0 {
+      $suffix: '-d'+#{-$amount};
+      $newColor: darken($color, -$amount);
+    } @else if $amount > 0 {
+      $suffix: '-l'+#{$amount};
+      $newColor: lighten($color, $amount);
+    }
+    @include bg($name, $newColor, $suffix);
+    @include border($name, $newColor, $suffix);
+  }
+  .text-#{$name} {
+    color: $color;
+  }
+}
+
