@@ -1,8 +1,0 @@
-@import "/node_modules/bootstrap/scss/bootstrap";
-
-@mixin bg($name,$color,$suffix) {
-  .bg-#{$name}#{$suffix} {
-    color: color-contrast($color);
-    background-color: $color;
-  }
-}

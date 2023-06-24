@@ -1,35 +1,20 @@
-@import '../../node_modules/bootstrap/scss/bootstrap';
-@import "mixins/_vars";
-@import "mixins/_bg";
-@import "mixins/_border";
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/variables-dark";
 
-@each $name, $color in $colorMap {
-  :root {
-    --color-#{$name}-main: #{$color};
-    --color-#{$name}: #{$color};
-  }
-  .btn-outline-#{$name} {
-    @include button-outline-variant($color);
-  }
-  .btn-outline-#{$name} {
-    @include button-variant($color);
-  }
-  $steps: -30, -20, -10, 0, 10, 20, 30;
-  @each $amount in $steps {
-    $suffix: '';
-    $newColor: $color;
-    @if $amount < 0 {
-      $suffix: '-d'+#{-$amount};
-      $newColor: darken($color, -$amount);
-    } @else if $amount > 0 {
-      $suffix: '-l'+#{$amount};
-      $newColor: lighten($color, $amount);
-    }
-    @include bg($name, $newColor, $suffix);
-    @include border($name, $newColor, $suffix);
-  }
-  .text-#{$name} {
-    color: $color;
-  }
-}
+$enable-rounded: false;
+@import "variables";
 
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $contest-colors);
+
+@import "node_modules/bootstrap/scss/maps";
+$theme-colors-text: map-merge($theme-colors-text, $contest-colors-text-emphasis);
+$theme-colors-bg-subtle: map-merge($theme-colors-bg-subtle, $contest-colors-bg-subtle);
+$theme-colors-border-subtle: map-merge($theme-colors-border-subtle, $contest-colors-border-subtle);
+
+$theme-colors-text-dark: map-merge($theme-colors-text-dark, $contest-colors-text-dark);
+$theme-colors-bg-subtle-dark: map-merge($theme-colors-bg-subtle-dark, $contest-colors-bg-subtle-dark);
+$theme-colors-border-subtle-dark: map-merge($theme-colors-border-subtle-dark, $contest-colors-border-subtle-dark);
+
+@import "node_modules/bootstrap/scss/bootstrap";

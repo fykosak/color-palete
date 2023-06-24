@@ -1,5 +1,0 @@
-@mixin border($name,$color,$suffix) {
-  .border-#{$name}#{$suffix} {
-    border-color: $color;
-  }
-}
